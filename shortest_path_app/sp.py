@@ -172,12 +172,12 @@ class ProjectController(app_manager.RyuApp):
             G[2][3]['weight'] = 100
             G[3][2]['weight'] = 100
 
-            G[1][4]['weight'] = 10000
-            G[4][1]['weight'] = 10000
-            G[4][5]['weight'] = 10000
-            G[5][4]['weight'] = 10000
-            G[5][3]['weight'] = 10000
-            G[3][5]['weight'] = 10000
+            G[1][4]['weight'] = 10
+            G[4][1]['weight'] = 10
+            G[4][5]['weight'] = 10
+            G[5][4]['weight'] = 10
+            G[5][3]['weight'] = 10
+            G[3][5]['weight'] = 10
             self.printG()
 
             path = nx.shortest_path(self.net, src, dst, weight="weight")

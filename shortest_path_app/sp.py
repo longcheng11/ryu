@@ -112,7 +112,7 @@ class ProjectController(app_manager.RyuApp):
         print "-----------List of links"
         print self.net.edges()
 
-        self.printG()
+        # self.printG()
         # the spectral layout
         # pos = nx.spectral_layout(G)
         # draw the regular graph
@@ -178,12 +178,13 @@ class ProjectController(app_manager.RyuApp):
             G[5][4]['weight'] = 10
             G[5][3]['weight'] = 10
             G[3][5]['weight'] = 10
-            self.printG()
+            # self.printG()
 
             path = nx.shortest_path(self.net, src, dst, weight="weight")
-            print path
-            print G[path[0]][path[1]]
-            print G[path[-2]][path[-1]]
+            # print path
+            # print G[path[0]][path[1]]
+            # print G[path[-2]][path[-1]]
+            print "dpid=", dpid
             print "length=", nx.shortest_path_length(self.net, src, dst, weight="weight")
 
             next = path[path.index(dpid) + 1]

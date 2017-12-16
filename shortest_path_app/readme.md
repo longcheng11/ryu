@@ -83,6 +83,7 @@ mininet>h1 ping -c 4 h2
 因为在sp.py的_packet_in_handler(self, ev):函数中，大约170行左右，我写死了交换机间的边权。其它节点间的边权为0，在162行。
 
 带权图如下：
+
 ![image.png](http://upload-images.jianshu.io/upload_images/3238358-0cddc94dfc1f914e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 像我这样强制指定链路的边权是不合理的，可以通过某些手段测得链路的物理值：带宽、时延等。

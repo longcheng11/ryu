@@ -13,7 +13,7 @@ shortest_path\_app/下的重要文件：
 	cd shortest_path_app/
 	sudo ryu-manager sp.py --observe-links
 	```
-	其中的`--observe-links`必须要加，否则看不到链路信息
+	其中的`--observe-links`必须要加：自动下发LLDP，用于拓扑发现，否则看不到链路信息
 
 2. 再打开另一个terminal，运行MiniNAM以启动mininet，创建自定义的网络。使用`--controller=remote`参数连接上一步启动的ryu的控制器进程
 	

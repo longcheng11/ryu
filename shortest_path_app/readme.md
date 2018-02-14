@@ -7,7 +7,7 @@ shortest_path\_app/下的重要文件：
 
 使用步骤：
 
-0. 安装ryu，再安装networkx、matplotlib、
+0. 安装ryu，再安装networkx、matplotlib、python-tk，mininet的安装微微复杂，请看下面的“mininet简介”
 
 	```bash
 	pip install ryu

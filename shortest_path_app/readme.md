@@ -7,6 +7,15 @@ shortest_path\_app/下的重要文件：
 
 使用步骤：
 
+0. 安装ryu，再安装networkx、matplotlib、
+
+	```bash
+	pip install ryu
+	pip install networkx
+	pip install matplotlib
+	sudo apt-get install python-tk
+	```
+	如果安装matplotlib时出现问题，可以运行`sudo apt-get install python-dev`
 1. 打开terminal，先运行ryu控制器进程，启动“最短路径”的应用
 	
 	```bash

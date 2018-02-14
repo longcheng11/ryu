@@ -7,16 +7,18 @@ shortest_path\_app/下的重要文件：
 
 使用步骤：
 
-0. 安装ryu，再安装networkx、matplotlib、python-tk，mininet的安装微微复杂，请看下面的“mininet简介”
+1. 先安装ryu。再安装python的包networkx、matplotlib。再安装ImageTk、python-tk。
 
 	```bash
 	pip install ryu
 	pip install networkx
 	pip install matplotlib
+	sudo apt-get install python-imaging-tk
 	sudo apt-get install python-tk
 	```
-	如果安装matplotlib时出现问题，可以运行`sudo apt-get install python-dev`
-1. 打开terminal，先运行ryu控制器进程，启动“最短路径”的应用
+	如果安装matplotlib时出现问题，可以尝试运行`sudo apt-get install python-dev`
+2. 而mininet的安装微微复杂，请看文章下面的“mininet简介”
+3. 打开terminal，先运行ryu控制器进程，启动“最短路径”的应用（sp.py文件）
 	
 	```bash
 	cd shortest_path_app/
@@ -24,7 +26,7 @@ shortest_path\_app/下的重要文件：
 	```
 	其中的`--observe-links`必须要加：自动下发LLDP，用于拓扑发现，否则看不到链路信息
 
-2. 再打开另一个terminal，运行MiniNAM以启动mininet，创建自定义的网络。使用`--controller=remote`参数连接上一步启动的ryu的控制器进程
+4. 再打开另一个terminal，运行MiniNAM以启动mininet，创建自定义的网络。使用`--controller=remote`参数连接上一步启动的ryu的控制器进程
 	
 	```bash
 	cd shortest_path_app/
@@ -35,7 +37,7 @@ shortest_path\_app/下的重要文件：
 	
 	![image.png](http://upload-images.jianshu.io/upload_images/3238358-6f0fef16646039e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-3. 在mininet中，host互相ping或iperf发流，测试“最短路径应用”。在mininet窗口下让`h1 ping h2`，发送4个包
+5. 在mininet中，host互相ping或iperf发流，测试“最短路径应用”。在mininet窗口下让`h1 ping h2`，发送4个包
 	
 	```
 	mininet>h1 ping -c 4 h2
@@ -57,7 +59,7 @@ shortest_path\_app/下的重要文件：
 * 备注2：其实整体过程并不是很难理解，在h1使用arp协议获知h2的mac地址之后，h1发出icmp ping包，s1不知道怎么处理，让控制器c0做决定，然后c0掐指一算，最短路径是1-4-5-3，让s1发给s4，s4也不知道怎么处理，还发给c0，c0还要算一次最短路，让s4发给s5，如此下去，因此要调用多次最短路径。不过也就最开始这样，等以后多发几次包，交换机流表项都配置好后，以后就不用问控制器了，交换机就知道该送到哪个交换机了。不过如果链路的权重变化了，那就要通知控制器，重新计算最短路，这样就麻烦了。。。之前的流表项要删，控制器配置新的流表项。具体怎么实现“权重改变，通知控制器”我也在想该怎么实现。。。
 
 ## mininet简介
-[mininet](http://mininet.org/)是一个轻量的进程级别的网络模拟器，[一共四种安装方法可以选择](http://mininet.org/download/)，推荐前两种：[直接下载官方镜像](http://mininet.org/download/#option-1-mininet-vm-installation-easy-recommended)或者[本地安装](http://mininet.org/download/#option-2-native-installation-from-source)。
+[mininet](http://mininet.org/)是一个轻量的进程级别的网络模拟器，[一共四种安装方法可以选择](http://mininet.org/download/)，推荐前两种：[直接下载官方镜像](http://mininet.org/download/#option-1-mininet-vm-installation-easy-recommended)或者[本地安装](http://mininet.org/download/#option-2-native-installation-from-source)。目前mininet仅仅支持'Ubuntu|Debian|Fedora|RedHatEnterpriseServer|SUSE LINUX'这几个系统（官方推荐ubuntu的最新版）。
 
 命令行启动mininet：
 

@@ -53,9 +53,9 @@ class ProjectController(app_manager.RyuApp):
     def printG(self):
         G = self.net
         print "G"
-        print "nodes", G.nodes()  # 输出全部的节点： [1, 2, 3]
-        print "edges", G.edges()  # 输出全部的边：[(2, 3)]
-        print "number_of_edges", G.number_of_edges()  # 输出边的数量：1
+        print "nodes", G.nodes()  # output nodes： [1, 2, 3]
+        print "edges", G.edges()  # output edges：[(2, 3)]
+        print "number_of_edges", G.number_of_edges() 
         for e in G.edges():
             print G.get_edge_data(e[0], e[1])
 
